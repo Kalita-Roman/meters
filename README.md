@@ -1,0 +1,1 @@
+[![Mar](https://travis-ci.com/Kalita-Roman/client-for-api.svg?token=y2hv587YmY4wgBBT8Cqr&branch=master)](https://travis-ci.com/Kalita-Roman/client-for-api)

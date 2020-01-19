@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tile.jsx 1`] = `
+<div
+  className="tile"
+>
+  <div
+    className="tile-header"
+  />
+  <div
+    className="tile-body"
+  />
+  <div
+    className="tile-footer"
+  />
+</div>
+`;

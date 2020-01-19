@@ -1,0 +1,47 @@
+{
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack",
+    "init": "npm i&&npm start",
+    "test": "jest --config jest.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack",
+    "deploy": "now --token=$NOW_TOKEN"
+  },
+  "dependencies": {
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.2",
+    "compose-middleware": "^5.0.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-react": "^7.12.4",
+    "express": "^4.16.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.7.1",
+    "mini-css-extract-plugin": "^0.6.0",
+    "node-sass": "^4.11.0",
+    "now": "^15.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.8.3",
+    "react-test-renderer": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "sass-resources-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-dev-middleware": "^3.6.2",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "css-hot-loader": "^1.4.4",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
