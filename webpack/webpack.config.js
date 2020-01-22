@@ -3,7 +3,7 @@ import path from 'path';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const port = 8000;
+const port = 8080;
 const host = 'localhost';
 const location = 'http://' + host + ':' + port;
 const entryPoiny = './src/index.js';
@@ -18,6 +18,7 @@ const commonPlugins = [
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         IS_DEV: JSON.stringify(IS_DEV),
         IS_PROD: JSON.stringify(IS_PROD),
+        API_SERVER: JSON.stringify(process.env.API_SERVER || 'http://API_SERVER'),
     }),
 ];
 

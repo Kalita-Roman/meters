@@ -8,3 +8,5 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+env:
+  - API_SERVER=$API_SERVER

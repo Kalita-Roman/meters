@@ -12,6 +12,8 @@ export default () => (<div className="app" >
     <Grid name="A" items={[{name: 'a'}, {name: 'b'}, {name: 'c'}]}/>
     <Grid name="B" items={[{name: 'e'}, {name: 'f'}]}/>
     <Grid name="C" items={[{name: 'g'}]}/>
+    <div>{JSON.stringify(process.env.API_SERVER)}</div>
+    <div>{JSON.stringify(API_SERVER)}</div>
 </div>);
 
 function getData() {
