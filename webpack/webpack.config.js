@@ -3,7 +3,7 @@ import path from 'path';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const port = 80;
+const port = 8000;
 const host = 'localhost';
 const location = 'http://' + host + ':' + port;
 const entryPoiny = './src/index.js';
