@@ -18,7 +18,7 @@ const commonPlugins = [
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         IS_DEV: JSON.stringify(IS_DEV),
         IS_PROD: JSON.stringify(IS_PROD),
-        API_SERVER: JSON.stringify(process.env.API_SERVER || 'http://API_SERVER'),
+        API_SERVER: JSON.stringify(process.env.API_SERVER),
     }),
 ];
 

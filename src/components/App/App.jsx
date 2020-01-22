@@ -6,19 +6,18 @@ import Grid from '../Grid';
 export default () => (<div className="app" >
     <p>Hello, World!</p>
     <p>Hello, World!</p>
-    <a href="http://localhost:8080/google/login">login</a>
-    <a href="http://localhost:8080/google/logout">logout</a>
+    <a href={API_SERVER+'/google/login'}>login</a>
+    <a href={API_SERVER+'/google/logout'}>logout</a>
     <button onClick={() => getData()}>getData</button>
     <Grid name="A" items={[{name: 'a'}, {name: 'b'}, {name: 'c'}]}/>
     <Grid name="B" items={[{name: 'e'}, {name: 'f'}]}/>
     <Grid name="C" items={[{name: 'g'}]}/>
-    <div>{JSON.stringify(process.env.API_SERVER)}</div>
-    <div>{JSON.stringify(API_SERVER)}</div>
+    <div>{'2: ' + JSON.stringify(API_SERVER)}</div>
 </div>);
 
 function getData() {
     console.log('getData');
-    fetch('http://localhost:8080/session', {
+    fetch(API_SERVER+'/session', {
         headers: new Headers({
             // 'cookie': document.cookie,
             // 'Accept': 'application/json',
