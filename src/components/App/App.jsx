@@ -6,8 +6,8 @@ import Grid from '../Grid';
 export default () => (<div className="app" >
     <p>Hello, World!</p>
     <p>Hello, World!</p>
-    <a href={API_SERVER+'/google/login'}>login</a>
-    <a href={API_SERVER+'/google/logout'}>logout</a>
+    <a href={API_SERVER+'google/login'}>login</a>
+    <a href={API_SERVER+'google/logout'}>logout</a>
     <button onClick={() => getData()}>getData</button>
     <Grid name="A" items={[{name: 'a'}, {name: 'b'}, {name: 'c'}]}/>
     <Grid name="B" items={[{name: 'e'}, {name: 'f'}]}/>
@@ -17,7 +17,7 @@ export default () => (<div className="app" >
 
 function getData() {
     console.log('getData');
-    fetch(API_SERVER+'/session', {
+    fetch(API_SERVER+'session', {
         headers: new Headers({
             // 'cookie': document.cookie,
             // 'Accept': 'application/json',
