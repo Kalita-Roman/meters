@@ -2,34 +2,17 @@ import webpack from 'webpack';
 import path from 'path';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import Dotenv from 'dotenv-webpack';
 
-const port = 8080;
-const host = 'localhost';
-const location = 'http://' + host + ':' + port;
+const DEVELOPMENT = 'development';
+const PRODUCTION = 'production';
+
 const entryPoiny = './src/index.js';
-const IS_DEV = process.env.NODE_ENV === 'development';
+const IS_DEV = process.env.NODE_ENV === DEVELOPMENT;
 const IS_PROD = !IS_DEV;
+const port = 8080;
+const location = 'http://localhost:' + port;
 const dist = 'bundle';
-const publicPath = '/' + dist;
-
-const commonPlugins = [
-    new CleanWebpackPlugin(),
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-        IS_DEV: JSON.stringify(IS_DEV),
-        IS_PROD: JSON.stringify(IS_PROD),
-        API_SERVER: JSON.stringify(process.env.API_SERVER),
-    }),
-];
-
-const envPlugins = IS_DEV
-    ? [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
-    ]
-    : [
-        new webpack.NamedModulesPlugin(),
-    ];
 
 const config = {
     entry: IS_DEV
@@ -46,10 +29,10 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(dist),
-        publicPath,
+        publicPath: dist,
     },
 
-    mode: IS_DEV ? 'development' : 'production',
+    mode: IS_DEV ? DEVELOPMENT : PRODUCTION,
 
     optimization: {
         minimize: IS_PROD
@@ -62,11 +45,21 @@ const config = {
 
     devtool: IS_DEV ? 'inline-source-map' : false,
 
-    plugins: [...commonPlugins, ...envPlugins,
+    plugins: [
+        new CleanWebpackPlugin(),
+        new Dotenv({ systemvars: true, defaults: true }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || DEVELOPMENT),
+            'process.env.IS_DEV': JSON.stringify(IS_DEV),
+            'process.env.IS_PROD': JSON.stringify(IS_PROD),
+        }),
+        IS_DEV && new webpack.HotModuleReplacementPlugin(),
+        IS_DEV && new webpack.NamedModulesPlugin(),
+        IS_PROD && new webpack.NamedModulesPlugin(),
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
         })
-    ],
+    ].filter(x => x),
 
     module: {
         rules: [
@@ -97,8 +90,8 @@ const config = {
 const devServer = {
     hot: true,
     port,
-    publicPath,
     historyApiFallback: true,
+    contentBase: path.join(__dirname, dist),
 };
 
 if (IS_DEV) {
