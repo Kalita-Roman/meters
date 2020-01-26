@@ -18,6 +18,7 @@ const dist = 'bundle';
 const config = {
     entry: IS_DEV
         ? [
+            '@babel/polyfill',
             'react-hot-loader/patch',
             'webpack-dev-server/client?' + location,
             'webpack/hot/only-dev-server',
@@ -30,7 +31,6 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(dist),
-        // publicPath: '/',
     },
 
     mode: IS_DEV ? DEVELOPMENT : PRODUCTION,
@@ -59,7 +59,7 @@ const config = {
             filename: 'bundle.css',
         }),
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './src/index.html'
         }),
         IS_DEV && new webpack.HotModuleReplacementPlugin(),
     ].filter(x => x),
@@ -94,7 +94,6 @@ const devServer = {
     hot: true,
     port,
     historyApiFallback: true,
-    // publicPath,
     contentBase: path.join(__dirname, dist),
 };
 
