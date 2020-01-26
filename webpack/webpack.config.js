@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
 
 const DEVELOPMENT = 'development';
@@ -29,7 +30,7 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(dist),
-        publicPath: dist,
+        // publicPath: '/',
     },
 
     mode: IS_DEV ? DEVELOPMENT : PRODUCTION,
@@ -53,12 +54,14 @@ const config = {
             'process.env.IS_DEV': JSON.stringify(IS_DEV),
             'process.env.IS_PROD': JSON.stringify(IS_PROD),
         }),
-        IS_DEV && new webpack.HotModuleReplacementPlugin(),
-        IS_DEV && new webpack.NamedModulesPlugin(),
-        IS_PROD && new webpack.NamedModulesPlugin(),
+        new webpack.NamedModulesPlugin(),
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
-        })
+        }),
+        new HtmlWebpackPlugin({
+            template: './index.html'
+        }),
+        IS_DEV && new webpack.HotModuleReplacementPlugin(),
     ].filter(x => x),
 
     module: {
@@ -91,6 +94,7 @@ const devServer = {
     hot: true,
     port,
     historyApiFallback: true,
+    // publicPath,
     contentBase: path.join(__dirname, dist),
 };
 
