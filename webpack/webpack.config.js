@@ -16,17 +16,13 @@ const location = 'http://localhost:' + port;
 const dist = 'bundle';
 
 const config = {
-    entry: IS_DEV
-        ? [
-            '@babel/polyfill',
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?' + location,
-            'webpack/hot/only-dev-server',
-            entryPoiny,
-        ]
-        : [
-            entryPoiny,
-        ],
+    entry: [
+        '@babel/polyfill',
+        IS_DEV && 'react-hot-loader/patch',
+        IS_DEV && 'webpack-dev-server/client?' + location,
+        IS_DEV &&'webpack/hot/only-dev-server',
+        entryPoiny,
+    ].filter(x => x),
 
     output: {
         filename: 'bundle.js',
