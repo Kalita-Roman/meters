@@ -5,12 +5,14 @@ export default ({ fetchSession, pending, user, apiServerUrl }) => {
     useEffect(() => {
         fetchSession();
     }, []);
+    
+    if(pending) {
+        return <Loader/>;
+    }
+
     return <div className="login">
-        {pending && <div>
-            <Loader/>
-        </div>}
         {
-            Boolean(user) || <div>
+            (!pending && Boolean(user)) || <div>
                 <p>
                     <a href={apiServerUrl+'google/login'}>login</a>
                 </p>

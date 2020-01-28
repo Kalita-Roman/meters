@@ -1,19 +1,32 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom';
 import './App.scss';
 
 import Login from '../Login';
 import Variables from '../Variables';
 import Grid from '../Grid';
 
-export default () => (<div className="app" >
-    <Login />
-    <button onClick={() => getData()}>getData</button>
-    <Grid/>
-    <Variables />
-</div>);
-
-async function getData() {
-    const response = await fetch(process.env.API_SERVER+'session', { credentials: 'include' });
-    const session = await response.json();
-    console.log(session);
-}
+export default () => (
+    <Router>
+        <div className="app" >
+            <Login />
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Switch>
+                <Route exact path="/">
+                    Home
+                </Route>
+                <Route path="/about">
+                    About
+                </Route>
+            </Switch>
+            <Grid />
+            <Variables />
+        </div>
+    </Router>
+);
