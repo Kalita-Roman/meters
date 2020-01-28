@@ -3,10 +3,12 @@ import './App.scss';
 
 import Login from '../Login';
 import Variables from '../Variables';
+import Grid from '../Grid';
 
 export default () => (<div className="app" >
     <Login />
     <button onClick={() => getData()}>getData</button>
+    <Grid/>
     <Variables />
 </div>);
 

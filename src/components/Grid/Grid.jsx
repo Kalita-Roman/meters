@@ -1,12 +1,18 @@
 import React from 'react';
 import './Grid.scss';
-import Tile from '../Tile';
+import Meter from '../Meter';
 
-export default ({name, items}) => (
-    <div className="grid">
-        <p className="grid-header">{name}</p>
-        <div className="grid-body">
-            {items.map((item, index) => (<Tile key={index} name={item.name} />))}
+export default () => {
+    const items = [{
+        name: '1'
+    }, {
+        name: '2'
+    }];
+    return (
+        <div className="grid">
+            <div className="grid-body">
+                {items.map((item, index) => (<Meter key={index} name={item.name} />))}
+            </div>
         </div>
-    </div>
-);
+    )
+};

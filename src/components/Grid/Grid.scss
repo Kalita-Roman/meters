@@ -1,6 +1,6 @@
 .grid {
     background-color: #aaa;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     margin-bottom: 5px;
 }
@@ -13,4 +13,6 @@
 
 .grid-body {
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
