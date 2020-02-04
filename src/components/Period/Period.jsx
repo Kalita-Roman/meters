@@ -6,6 +6,7 @@ export default ({ loadData, meters }) => {
         loadData && loadData();
     }, []);
 
+    console.log('meters', meters);
     return <div className="period">
         <button onClick={() => loadData && loadData()}>Reload</button>
         { meters.map((meter) => 
