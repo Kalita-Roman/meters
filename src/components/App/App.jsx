@@ -1,21 +1,24 @@
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
+    // Switch,
+    // Route,
+    // Link
 } from 'react-router-dom';
 import './App.scss';
 
 import Login from '../Login';
 import Variables from '../Variables';
-import Grid from '../Grid';
+import Period from '../Period';
+// import AllData from '../AllData';
 
 export default () => (
     <Router>
         <div className="app" >
             <Login />
-            <Link to="/">Home</Link>
+            {/* <AllData /> */}
+            <Period />
+            {/* <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Switch>
                 <Route exact path="/">
@@ -25,7 +28,7 @@ export default () => (
                     About
                 </Route>
             </Switch>
-            <Grid />
+            <Grid /> */}
             <Variables />
         </div>
     </Router>

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Login from './Login';
 import { setSession } from '../../actions/session';
+import { request } from '../../services/request';
 
 const selectUser = (state) => state.session.user;
 
@@ -18,8 +19,7 @@ const mapDispatchToProps = {
     fetchSession: () => async (dispatch) => {
         dispatch(setSession({ pending: true, user: null }));
 
-        const response = await fetch(process.env.API_SERVER+'whoami', { credentials: 'include' });
-        const session = await response.json();
+        const session = await request('whoami'); 
 
         const user = session.passport && session.passport.user;
 
