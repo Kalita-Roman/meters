@@ -6,10 +6,8 @@ import { addPeriod } from '../../actions/periods';
 const mapStateToProps = (state) => {
     const { periods } = state;
     const { current, previous, all } = periods;
-    console.log('periods', periods);
     const currentPeriod = [...current && all[current].meters || []];
     const previousPeriod = [...previous && all[previous].meters || []];
-    console.log('previousPeriod', previousPeriod);
     const meters = Array.from(new Set([
         ...currentPeriod.map(x => x.type),
         ...previousPeriod.map(x => x.type)
