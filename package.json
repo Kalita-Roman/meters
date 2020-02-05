@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack",
+    "start": "node index.js",
     "init": "npm i&&npm start",
     "test": "jest --config jest.config.js",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
