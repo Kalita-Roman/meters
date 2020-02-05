@@ -27,6 +27,7 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(dist),
+        publicPath: IS_DEV ? '/' : `/${dist}`,
     },
 
     mode: IS_DEV ? DEVELOPMENT : PRODUCTION,
