@@ -4,6 +4,7 @@
     "init": "npm i&&npm start",
     "test": "jest --config jest.config.js",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
+    "now-build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "deploy": "now --token=$NOW_TOKEN --name=meters --prod",
     "deploy:staging": "now --token=$NOW_TOKEN"
   },
