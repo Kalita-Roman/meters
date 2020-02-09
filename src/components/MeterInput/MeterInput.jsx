@@ -1,4 +1,5 @@
 import React from 'react';
+import './MeterInput.scss';
 
 export default ({ meter }) => {
     return <div className={'meter-input'} >
