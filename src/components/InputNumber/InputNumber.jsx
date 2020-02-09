@@ -1,6 +1,6 @@
 import React, { useState, createRef, useCallback } from 'react';
 import classnames from 'classnames';
-import './InputText.scss';
+import './InputNumber.scss';
 
 export default ({
     className,
@@ -21,7 +21,7 @@ export default ({
         onChange={handleChange}
         ref={ref}
         className={classnames('input-text', className)}
-        type={'text'}
+        type="number"
         value={inputValue}
     />;
 };
