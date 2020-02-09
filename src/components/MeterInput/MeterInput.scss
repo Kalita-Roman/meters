@@ -1,12 +1,22 @@
 .meter-input {
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
 
     &__type {
         width: 100%;
     }
 
     &__prev {
-        width: 50%;
+        width: 35%;
+    }
+
+    &__curr {
+        width: 35%;
+        display: block;
+    }
+
+    &__button{
+        width: 30%;
     }
 }

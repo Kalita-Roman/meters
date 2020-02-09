@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Period from './Period';
 import { request } from '../../services/request';
 import { addPeriod } from '../../actions/periods';
+import { sendDataOfMeter } from '../../actions/metersData';
 
 const mapStateToProps = (state) => {
     const { periods } = state;
@@ -40,7 +41,13 @@ const mapDispatchToProps = {
             current: current.name,
             previous: previous.name,
         }));
+    },
+
+    saveDataOfMeters: (payload) => (dispatch) => {
+        dispatch(sendDataOfMeter(payload));
     }
+
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Period);
