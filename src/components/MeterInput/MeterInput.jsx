@@ -22,11 +22,13 @@ export default ({ meter, onSaveData }) => {
         <InputNumber
             onChange={setValue}
             className={'meter-input__curr'}
-            value={''}
+            value={meter.current.value || ''}
         />
         <button
             className={'meter-input__button'}
             onClick={handleSave}
-        >Сохранить</button>
+        >
+            Сохранить
+        </button>
     </div>;
 };
