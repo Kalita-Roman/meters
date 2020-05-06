@@ -2,6 +2,6 @@
     "version": 2,
     "builds": [
         { "src": "index.js", "use": "@now/node-server" },
-        { "src": "bundle/*.*", "use": "@now/static" }
+        { "src": "build/*.*", "use": "@now/static" }
     ]
 }

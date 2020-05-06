@@ -13,7 +13,7 @@ const IS_DEV = process.env.NODE_ENV === DEVELOPMENT;
 const IS_PROD = !IS_DEV;
 const port = 8080;
 const location = 'http://localhost:' + port;
-const dist = 'bundle';
+const dist = 'build';
 
 const config = {
     entry: [
