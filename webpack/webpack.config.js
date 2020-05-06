@@ -22,12 +22,12 @@ const config = {
         IS_DEV && 'webpack-dev-server/client?' + location,
         IS_DEV &&'webpack/hot/only-dev-server',
         entryPoiny,
-    ].filter(x => x),
+    ].filter(Boolean),
 
     output: {
         filename: 'bundle.js',
         path: path.resolve(dist),
-        publicPath: IS_DEV ? '/' : `/${dist}`,
+        publicPath: '/',
     },
 
     mode: IS_DEV ? DEVELOPMENT : PRODUCTION,
