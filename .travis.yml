@@ -4,7 +4,12 @@ node_js:
 script: npm run-script build
 deploy:
   provider: script
-  script: npm run deploy
+  script: 
+   - checkout
+   - node --version
+   - npm --version
+   - npm install now -g
+   - now --token=$NOW_TOKEN --name=meters --prod
   skip_cleanup: true
   on:
     branch: master
