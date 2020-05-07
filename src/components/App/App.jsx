@@ -14,7 +14,7 @@ import Period from '../Period';
 
 export default () => (
     <Router>
-        <div>Dev</div>
+        <div>Dev 1</div>
         <div>Hello World!</div>
         <div className="app" >
             <Login />
