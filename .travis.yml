@@ -1,14 +1,21 @@
 language: node_js
 node_js:
 - lts/*
+
+env:
+  global:
+    - API_SERVER=api_server
+      SOME_VALUE=0
+
 jobs:
   include:
-    - # require the branch name to be master (note for PRs this is the base branch name)
-      if: branch = master
+    - if: branch = master
       env: ENV_ID=0
     - if: branch = dev
       env: ENV_ID=1
+
 script: npm run-script build
+
 deploy:
 - provider: firebase
   token: $FIREBASE_TOKEN
@@ -22,7 +29,3 @@ deploy:
   skip_cleanup: true
   on:
     branch: dev
-env:
-  global:
-    - API_SERVER=api_server
-      SOME_VALUE=0
