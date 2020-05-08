@@ -5,7 +5,7 @@ script: npm run-script build
 deploy:
 - provider: firebase
   token:
-    secure: $FIREBASE_TOKEN_SECURE
+    secure: $FIREBASE_TOKEN
   project: test-site-roman
   skip_cleanup: true
   on:
