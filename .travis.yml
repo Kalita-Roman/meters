@@ -1,6 +1,13 @@
 language: node_js
 node_js:
 - lts/*
+jobs:
+  include:
+    - # require the branch name to be master (note for PRs this is the base branch name)
+      if: branch = master
+      env: ENV_ID=0
+    - if: branch = dev
+      env: ENV_ID=1
 script: npm run-script build
 deploy:
 - provider: firebase
@@ -18,7 +25,4 @@ deploy:
 env:
   global:
     - API_SERVER=api_server
-    - SOME_VALUE=0
-  matrix:
-    - ENV_ID=true
-    - ENV_ID=false
+      SOME_VALUE=0
