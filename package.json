@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack",
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.js --passWithNoTests",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "now-build": "cross-env NODE_ENV=production webpack --config ./webpack",
     "deploy": "bush deploy.sh"

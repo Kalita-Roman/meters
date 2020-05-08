@@ -1,12 +1,23 @@
 language: node_js
 node_js:
-- 'lts/*'
+- lts/*
 script: npm run-script build
 deploy:
-  provider: script
-  script: npm run deploy
+- provider: firebase
+  token: $FIREBASE_TOKEN
+  project: meters-home
   skip_cleanup: true
   on:
     branch: master
+  env:
+  - ENV_ID=0
+- provider: firebase
+  token: $FIREBASE_TOKEN
+  project: meters-home-dev
+  skip_cleanup: true
+  on:
+    branch: dev
+  env:
+  - ENV_ID=1
 env:
   - API_SERVER=$API_SERVER

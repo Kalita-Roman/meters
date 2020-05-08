@@ -16,6 +16,8 @@ export default () => (
     <Router>
         <div>Dev 1</div>
         <div>Hello World!</div>
+        <div>Master branch</div>
+        <div>1</div>
         <div className="app" >
             <Login />
             {/* <AllData /> */}
