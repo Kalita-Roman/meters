@@ -17,5 +17,8 @@ deploy:
     branch: dev
 env:
   global:
-    - CAMPFIRE_TOKEN=abc123
-    - TIMEOUT=1000
+    - API_SERVER=api_server
+    - SOME_VALUE=0
+  matrix:
+    - ENV_ID=true
+    - ENV_ID=false
