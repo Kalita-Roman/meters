@@ -16,5 +16,6 @@ deploy:
   on:
     branch: dev
 env:
-  - API_SERVER=$API_SERVER
-  - ENV_ID=0
+  global:
+    - CAMPFIRE_TOKEN=abc123
+    - TIMEOUT=1000
