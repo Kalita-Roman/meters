@@ -50,6 +50,7 @@ const config = {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || DEVELOPMENT),
             'process.env.IS_DEV': JSON.stringify(IS_DEV),
             'process.env.IS_PROD': JSON.stringify(IS_PROD),
+            'process.env.ENV_ID': JSON.stringify(process.env.ENV_ID),
         }),
         new webpack.NamedModulesPlugin(),
         new MiniCssExtractPlugin({
