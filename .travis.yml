@@ -10,7 +10,7 @@ deploy:
   on:
     branch: master
   env:
-  - ENV=0
+  - ENV_ID=0
 - provider: firebase
   token: $FIREBASE_TOKEN
   project: meters-home-dev
@@ -18,6 +18,6 @@ deploy:
   on:
     branch: dev
   env:
-  - ENV=1
+  - ENV_ID=1
 env:
   - API_SERVER=$API_SERVER
