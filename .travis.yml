@@ -5,21 +5,19 @@ script: npm run-script build
 deploy:
 - provider: firebase
   token: $FIREBASE_TOKEN
-  project: test-site-roman
+  project: meters-home
   skip_cleanup: true
   on:
     branch: master
   env:
   - ENV=0
-- provider: script
-  script: bash deploy.sh
+- provider: firebase
+  token: $FIREBASE_TOKEN
+  project: meters-home-dev
   skip_cleanup: true
   on:
     branch: dev
   env:
   - ENV=1
 env:
-  matrix:
   - API_SERVER=$API_SERVER
-  global:
-    secure: calGbArWYXjU6j0bQn0LvtmpWgs/ZpRjO7vVk4bQSFOiwJKCxnM1t8z173obTSQwGXav/pOqnUdePByasx41LPxZfgNXW04JE9avi2vitLHliK+5BGla6SteZiSyN9Ywv+tia+vLiWPtCTkixDFrbVGzeuKJMuyh/RtvOfpizZ0VIJ54xy7Ijld54bLe0UY2J1yACfGUrQwFNOty+u7oecW224l8yu/CxqI15xtsrkO3w8QW2rsb3MSnbOl+ExFOfadRETM3NZwgrxS3AfwNzHAw8H3I1AKBwOtkscyXyUjj6mY3vo/7YhwzFKseHdq+Ck7FHDQp3hZWIBfc51oaDqlAw/Pjh9G8Yc35CDndp9H2cgyedYAd27gs/P8DsBUkQhWleY7Cusd0qYEpKK4nmydOBRF4xKJM2Oxd7B+4GvGjLZrvn3P3VuUdMZHaX5URGLFgdZXbCdmhyPW9ELrkbeN9PS3Dbvwe/YhOtYQbZwxPZzuMhrE+mfB3Qpk8NqSLRYMzTaccRB6vTPXncBSdxyFaWfVV4jA9wkXZUMdHF9k/gGD7CJcN4sT5O8lZWSvYrg4A2GfR3muaoQJanKI7D8mByuXfBgzhM8XwFvKNOAXFpPVsBK3qZKVd6R0SIvAz8YrZM8cnWx4rTw6N8PpDDgAiHAPmKrznchss9e1ZUOA=
