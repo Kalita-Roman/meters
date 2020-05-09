@@ -4,8 +4,7 @@ node_js:
 
 env:
   global:
-    - API_SERVER=api_server
-      SOME_VALUE=0
+    - API_SERVER=$API_SERVER
 
 jobs:
   include:
