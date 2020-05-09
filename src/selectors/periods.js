@@ -1,0 +1,1 @@
+export const selectCurrnetPeriod = (state) => state.period;

@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react';
 import MeterInput from '../MeterInput';
 
-export default ({ loadData, saveDataOfMeters, meters }) => {
+export default ({ loadData = () => {}, period }) => {
     useEffect(() => {
-        loadData && loadData();
+        loadData();
     }, []);
 
+    if(!period || !period.meters) {
+        return null;
+    }
+
     return <div className="period">
-        <button onClick={() => loadData && loadData()}>Reload</button>
-        { meters.map((meter) => 
-            <MeterInput onSaveData={saveDataOfMeters} key={meter.type} meter={meter} />
+        <p className="period-name">{'период: 2020-04'}</p>
+        { period.meters.map((meter) => 
+            <MeterInput key={meter.type} meter={meter} />
         ) }
     </div>;
 };

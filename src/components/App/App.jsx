@@ -8,29 +8,33 @@ import {
 import './App.scss';
 
 import Login from '../Login';
-import Variables from '../Variables';
+import IfSession from '../IfSession';
+// import Variables from '../Variables';
 import Period from '../Period';
 // import AllData from '../AllData';
 
 export default () => (
-    <Router>
-        <div>Hello World!</div>
-        <div className="app" >
+    <>
+        <header>
             <Login />
-            {/* <AllData /> */}
-            <Period />
-            {/* <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Switch>
-                <Route exact path="/">
-                    Home
-                </Route>
-                <Route path="/about">
-                    About
-                </Route>
-            </Switch>
-            <Grid /> */}
-            <Variables />
-        </div>
-    </Router>
+        </header>
+        <IfSession>
+            <Router>
+                {/* <AllData /> */}
+                <Period />
+                {/* <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
+                    <Switch>
+                        <Route exact path="/">
+                            Home
+                        </Route>
+                        <Route path="/about">
+                            About
+                        </Route>
+                    </Switch>
+                    <Grid /> */}
+            </Router>
+        </IfSession>
+        {/* <Variables /> */}
+    </>
 );

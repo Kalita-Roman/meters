@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 
 import session from './session';
-import allData from './allData';
-import periods from './periods';
+import period from './period';
 
 export default combineReducers({
     session,
-    allData,
-    periods,
+    period,
 });

@@ -4,15 +4,15 @@
     box-sizing: border-box;
 
     &__type {
-        width: 100%;
+        width: 30%;
     }
 
-    &__prev {
-        width: 35%;
+    &__previous {
+        width: 20%;
     }
 
-    &__curr {
-        width: 35%;
+    &__current {
+        width: 20%;
         display: block;
     }
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Loader from '../Loader';
+import './Login.scss';
 
 export default ({ fetchSession, pending, user, apiServerUrl }) => {
     useEffect(() => {
@@ -19,8 +20,8 @@ export default ({ fetchSession, pending, user, apiServerUrl }) => {
             </div>
         }
         {
-            user && <div>
-                <p>{`Пользователь: ${user.displayName}`}</p>
+            user && <div className="auth-logout">
+                <p>{`${user.displayName}`}</p>
                 <p>
                     <a href={apiServerUrl+'google/logout'}>logout</a>
                 </p>

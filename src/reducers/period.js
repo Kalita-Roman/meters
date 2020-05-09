@@ -5,11 +5,10 @@ export default function (state = initialState, action) {
     switch (type) 
     {
     case 'ADD_PERIOD':
+        console.log('>>> payload', payload);
         return { 
             ...state,
-            all: { ...state.all||{}, ...payload.all },
-            current: payload.current,
-            previous: payload.previous,
+            ...payload
         };
     default: return state;
     }

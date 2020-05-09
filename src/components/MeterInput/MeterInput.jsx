@@ -3,26 +3,26 @@ import InputNumber from '../InputNumber';
 import './MeterInput.scss';
 
 
-export default ({ meter, onSaveData }) => {
+export default ({ meter }) => {
     const [ value, setValue ] = useState(null);
 
     const handleSave = useCallback(
         () => {
-            onSaveData({
-                type: meter.type,
-                value: value,
-            });
+            // onSaveData({
+            //     type: meter.type,
+            //     value: value,
+            // });
         },
         [value]
     );
 
     return <div className={'meter-input'} >
-        <div className={'meter-input__type'}>{meter.type}</div>
-        <div className={'meter-input__prev'}>{meter.previous.value || 0}</div>
+        <div className={'meter-input__type'}>{meter.name}</div>
+        <div className={'meter-input__previous'}>{meter.previousValue}</div>
         <InputNumber
             onChange={setValue}
-            className={'meter-input__curr'}
-            value={meter.current.value || ''}
+            className={'meter-input__current'}
+            value={meter.currentValue}
         />
         <button
             className={'meter-input__button'}

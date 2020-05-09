@@ -1,53 +1,20 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import Period from './Period';
-import { request } from '../../services/request';
-import { addPeriod } from '../../actions/periods';
+import { loadCurrentPeriod } from '../../actions/periods';
 import { sendData } from '../../actions/metersData';
+import { selectCurrnetPeriod } from '../../selectors/periods';
 
-const mapStateToProps = (state) => {
-    const { periods } = state;
-    const { current, previous, all } = periods;
-    const currentPeriod = [...current && all[current].meters || []];
-    const previousPeriod = [...previous && all[previous].meters || []];
-    const meters = Array.from(new Set([
-        ...currentPeriod.map(x => x.type),
-        ...previousPeriod.map(x => x.type)
-    ]))
-        .map(x => ({ 
-            type: x,
-            current: currentPeriod.find(meter => meter.type === x),
-            previous: previousPeriod.find(meter => meter.type === x),
-        }));
-    return { 
-        period: state.periods,
-        meters,
-    };
-};
+const mapStateToProps = createStructuredSelector({
+    period: selectCurrnetPeriod
+});
 
 const mapDispatchToProps = {
-    loadData: () => async (dispatch) => {
-        const data = await request('meters/current');
-        const { current, previous } = data.response.periods;
-        dispatch(addPeriod({ 
-            all: { [current.name]: {
-                name: current.name,
-                meters: current.meters,
-                order: current.order,
-            }, [previous.name]:  {
-                name: previous.name,
-                meters: previous.meters,
-                order: previous.order,
-            }},
-            current: current.name,
-            previous: previous.name,
-        }));
-    },
+    loadData: loadCurrentPeriod,
 
     saveDataOfMeters: (payload) => (dispatch) => {
         dispatch(sendData(payload));
     }
-
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Period);
