@@ -8,7 +8,6 @@ import Dotenv from 'dotenv-webpack';
 const DEVELOPMENT = 'development';
 const PRODUCTION = 'production';
 
-const entryPoiny = './src/index.js';
 const IS_DEV = process.env.NODE_ENV === DEVELOPMENT;
 const IS_PROD = !IS_DEV;
 const port = 8080;
@@ -21,7 +20,7 @@ const config = {
         IS_DEV && 'react-hot-loader/patch',
         IS_DEV && 'webpack-dev-server/client?' + location,
         IS_DEV &&'webpack/hot/only-dev-server',
-        entryPoiny,
+        './src/index.js',
     ].filter(Boolean),
 
     output: {
@@ -39,6 +38,9 @@ const config = {
     resolve: {
         modules: ['node_modules', './'],
         extensions: ['.js', '.jsx'],
+        alias: {
+            'react-dom': '@hot-loader/react-dom',
+        },
     },
 
     devtool: IS_DEV ? 'inline-source-map' : false,
