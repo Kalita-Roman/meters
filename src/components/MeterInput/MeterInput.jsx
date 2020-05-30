@@ -1,22 +1,22 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import cn from 'classnames';
+import { saveReading } from '../../actions/periods';
 import InputNumber from '../InputNumber';
 import './MeterInput.scss';
 
-
-export default ({ meter }) => {
-    const [ value, setValue ] = useState(null);
+export default ({ className, meter }) => {
+    const [ value, setValue ] = useState(meter.currentValue);
+    const dispatch = useDispatch();
 
     const handleSave = useCallback(
         () => {
-            // onSaveData({
-            //     type: meter.type,
-            //     value: value,
-            // });
+            dispatch(saveReading({ id: meter.currentReadingId,value }));
         },
         [value]
     );
 
-    return <div className={'meter-input'} >
+    return <div className={cn(className, 'meter-input')} >
         <div className={'meter-input__type'}>{meter.name}</div>
         <div className={'meter-input__previous'}>{meter.previousValue}</div>
         <InputNumber
@@ -25,10 +25,10 @@ export default ({ meter }) => {
             value={meter.currentValue}
         />
         <button
-            className={'meter-input__button'}
+            className={'meter-input__button button'}
             onClick={handleSave}
         >
-            Сохранить
+            Сохр.
         </button>
     </div>;
 };

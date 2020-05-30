@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AllData from './AllData';
-import { request } from '../../services/request';
+import request from '../../services/request';
 import { setAllData } from '../../actions/metersData';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     loadData: () => async (dispatch) => {
-        const data = await request('meters/records');
+        const data = await request.get('meters/records');
         console.log('loadData AllData', data.response);
         dispatch(setAllData(data));
     }

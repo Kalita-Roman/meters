@@ -1,18 +1,36 @@
 const serverUrl = process.env.API_SERVER;
 
-export const request = async (uri) => {
-    const response = await fetch(`${serverUrl}${uri}`, { credentials: 'include' });
+const commonOptions = {
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+};
+
+const mergeOptions = (a, b) => ({ ...a, ...b });
+
+const generalRequest = async (url, options) => {
+    const optionsToUse = mergeOptions(
+        commonOptions,
+        { 
+            ...options, 
+            body: options && options.body && JSON.stringify(options.body)
+        }
+    );
+    const response = await fetch(`${serverUrl}${url}`, optionsToUse);
     return response.json();
 };
 
-export const requestPost = async (uri, { body }) => {
-    const response = await fetch(`${serverUrl}${uri}`, { 
+export const request = generalRequest;
+
+export const requestPUT = async (url, { body }) => {
+    return generalRequest(url, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify(body),
+        body
     });
-    return response.json();
+};
+
+export default {
+    get: generalRequest,
+    put: requestPUT,
 };

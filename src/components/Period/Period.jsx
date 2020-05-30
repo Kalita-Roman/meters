@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import MeterInput from '../MeterInput';
+import './Period.scss';
 
 export default ({ loadData = () => {}, period }) => {
     useEffect(() => {
@@ -11,9 +12,9 @@ export default ({ loadData = () => {}, period }) => {
     }
 
     return <div className="period">
-        <p className="period-name">{'период: 2020-04'}</p>
+        <p className="period__name">{'период: 2020-04'}</p>
         { period.meters.map((meter) => 
-            <MeterInput key={meter.type} meter={meter} />
+            <MeterInput key={meter.type} meter={meter} className={'period__item'} />
         ) }
     </div>;
 };

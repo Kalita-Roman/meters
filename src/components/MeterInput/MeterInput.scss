@@ -1,14 +1,22 @@
 .meter-input {
     display: flex;
+    height: 44px;
     flex-wrap: wrap;
     box-sizing: border-box;
+    justify-content: space-between;
 
     &__type {
         width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__previous {
         width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__current {
@@ -17,6 +25,10 @@
     }
 
     &__button{
-        width: 30%;
+        width: 44px;
     }
+}
+
+.button {
+    padding: 0;
 }
