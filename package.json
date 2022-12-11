@@ -23,7 +23,7 @@
     "eslint": "^5.16.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-react": "^7.12.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "26.0.1",
     "mini-css-extract-plugin": "^0.6.0",
